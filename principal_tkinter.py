@@ -54,14 +54,6 @@ def atualiza_dados():
         sleep(2)
         resposta = requests.get('http://192.168.1.1/')
         dados = resposta.text
-        
-        if resposta.status_code==200:
-            print("OK") #se diferente de 200 erro de ligação
-            connection.config(text="OK")
-        else:
-            print(resposta.status_code) #se diferente de 200 erro de ligação
-            connection.config(text="ERROR")
-        
         dados_separados = dados.split("e")  
         temp = dados_separados[0] + "ºC"
         temperatura.config(text=temp)
@@ -73,8 +65,6 @@ def atualiza_dados():
 
 
 window = Tk()
-
-
 
 window.geometry("420x520")
 window.title("Leitura de Dados")
@@ -108,11 +98,8 @@ humidade.grid(row=5,column=1,columnspan=1, sticky=N, padx=10, pady=10)
 date_label = Label(window,font=("Ink Free",30))
 date_label.grid(row=6,column=0,columnspan=2, sticky=N, padx=10, pady=10)
 
-connection = Label(window,font=("Ink Free",30))
-connection.grid(row=7,column=0,columnspan=2, sticky=N, padx=10, pady=10)
-
 time_label = Label(window,font=("Ink Free",30))
-time_label.grid(row=8,column=0,columnspan=2, sticky=N, padx=10, pady=10)
+time_label.grid(row=7,column=0,columnspan=2, sticky=N, padx=10, pady=10)
 
 threading.Thread(target=atualiza_dados).start()
 threading.Thread(target=update).start()
