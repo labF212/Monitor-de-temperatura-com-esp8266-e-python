@@ -15,10 +15,6 @@ IPAddress subnet(255,255,255,0);
 
 WebServer server(80);
 
-
-
-
-
 void handle_OnConnect() {
   String umidade = String(dht.getHumidity());
   String temperatura = String(dht.getTemperature()); 
