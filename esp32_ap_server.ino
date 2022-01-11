@@ -1,5 +1,13 @@
+#ifdef ESP8266
+#include <ESP8266Wifi.h>
+#include <ESP8266mDNS.h>
+#elif defined(ESP32)
 #include <WiFi.h>
 #include <WebServer.h>
+#else 
+#error "Board not found"
+#endif
+
 #include "DHTesp.h"
 
 DHTesp dht;
